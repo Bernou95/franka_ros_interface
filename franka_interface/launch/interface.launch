@@ -1,12 +1,13 @@
 <?xml version="1.0" ?>
 <launch>
   <rosparam command="load" file="$(find franka_ros_controllers)/config/ros_controllers.yaml" ns="/franka_ros_interface"/>
+  <arg name="arm_id"      default="fr3" doc="Name of the panda robot to spawn (panda|fr3)" />
   <arg name="load_gripper" default="true" />
   <arg name="rate" default="1000" />
   <arg name="start_controllers" default="true" />
   <arg name="start_moveit" default="true" />
   <arg name="fake_execution" default="false" /> <!-- Only valid if running moveit movegroup (start_moveit:=true) -->
-  <arg name="load_demo_planning_scene" default="true"/>
+  <arg name="load_demo_planning_scene" default="false"/>
 
   <!-- Panda Control Interface -->
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find franka_panda_description)/robots/panda_arm_hand.urdf.xacro'" if="$(arg load_gripper)" />
@@ -17,7 +18,7 @@
   </include>
 
   <!-- Start the custom_franka_control_node for advertising controller services and starting custom controller manager-->
-  <rosparam command="load" file="$(find franka_interface)/config/robot_config.yaml"/>
+  <rosparam command="load" file="$(find franka_interface)/config/$(arg arm_id)/robot_config.yaml"/>
   <param name="/robot_config/robot_ip" type="str" value="$(env FRANKA_ROBOT_IP)" />
   <node name="franka_control" pkg="franka_interface" type="custom_franka_control_node" output="screen" required="true" >
     <!-- <rosparam command="load" file="$(find franka_control)/config/custom_franka_control_node.yaml" /> -->

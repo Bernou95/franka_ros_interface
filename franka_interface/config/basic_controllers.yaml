@@ -1,42 +1,36 @@
 # load the internal joint trajectory controller, and the custom robot state controller
-
+arm_id: $(arg arm_id)
 position_joint_trajectory_controller:
   type: position_controllers/JointTrajectoryController
   joints:
-    - panda_joint1
-    - panda_joint2
-    - panda_joint3
-    - panda_joint4
-    - panda_joint5
-    - panda_joint6
-    - panda_joint7
+    - $(arg arm_id)_joint1
+    - $(arg arm_id)_joint2
+    - $(arg arm_id)_joint3
+    - $(arg arm_id)_joint4
+    - $(arg arm_id)_joint5
+    - $(arg arm_id)_joint6
+    - $(arg arm_id)_joint7
   constraints:
     goal_time: 0.5
-    panda_joint1:
-      goal: 0.05
-    panda_joint2:
-      goal: 0.05
-    panda_joint3:
-      goal: 0.05
-    panda_joint4:
-      goal: 0.05
-    panda_joint5:
-      goal: 0.05
-    panda_joint6:
-      goal: 0.05
-    panda_joint7:
-      goal: 0.05
+    $(arg arm_id)_joint1: { goal: 0.05 }
+    $(arg arm_id)_joint2: { goal: 0.05 }
+    $(arg arm_id)_joint3: { goal: 0.05 }
+    $(arg arm_id)_joint4: { goal: 0.05 }
+    $(arg arm_id)_joint5: { goal: 0.05 }
+    $(arg arm_id)_joint6: { goal: 0.05 }
+    $(arg arm_id)_joint7: { goal: 0.05 }
 
 franka_ros_interface:
   custom_franka_state_controller:
     type: franka_interface/CustomFrankaStateController
+    arm_id: $(arg arm_id)
     publish_rate: 1000  # [Hz]
     joint_names:
-      - panda_joint1
-      - panda_joint2
-      - panda_joint3
-      - panda_joint4
-      - panda_joint5
-      - panda_joint6
-      - panda_joint7
-    arm_id: panda
+      - $(arg arm_id)_joint1
+      - $(arg arm_id)_joint2
+      - $(arg arm_id)_joint3
+      - $(arg arm_id)_joint4
+      - $(arg arm_id)_joint5
+      - $(arg arm_id)_joint6
+      - $(arg arm_id)_joint7
+

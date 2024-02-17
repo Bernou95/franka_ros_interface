@@ -1,0 +1,109 @@
+# global robot configuration and details
+
+robot_config:
+
+    joint_names:
+      - fr3_joint1
+      - fr3_joint2
+      - fr3_joint3
+      - fr3_joint4
+      - fr3_joint5
+      - fr3_joint6
+      - fr3_joint7
+    arm_id: fr3
+        # Activate rate limiter? [true|false]
+    joint_limit_warning_threshold: 0.1 # [rad]
+    rate_limiting: true
+    # Cutoff frequency of the low-pass filter. Set to >= 1000 to deactivate.
+    cutoff_frequency: 100
+    # Internal controller for motion generators [joint_impedance|cartesian_impedance]
+    internal_controller: joint_impedance
+
+    neutral_pose:
+        fr3_joint1: -0.017792060227770554
+        fr3_joint2: -0.7601235411041661
+        fr3_joint3: 0.019782607023391807
+        fr3_joint4: -2.342050140544315
+        fr3_joint5: 0.029840531355804868
+        fr3_joint6: 1.5411935298621688
+        fr3_joint7: 0.7534486589746342
+
+    joint_config:
+        joint_acceleration_limit:
+            fr3_joint1: 10.0 # rad / sec^2
+            fr3_joint2: 10.0  # rad / sec^2
+            fr3_joint3: 10.0 # rad / sec^2
+            fr3_joint4: 10.0 # rad / sec^2
+            fr3_joint5: 10.0 # rad / sec^2
+            fr3_joint6: 10.0 # rad / sec^2
+            fr3_joint7: 10.0 # rad / sec^2
+            # panda_finger_joint1: 12.0 # rad / sec^2
+            # panda_finger_joint2: 12.0 # rad / sec^2
+
+        joint_velocity_limit:
+            fr3_joint1: 2.62 # rad / sec
+            fr3_joint2: 2.62 # rad / sec
+            fr3_joint3: 2.62 # rad / sec
+            fr3_joint4: 2.62 # rad / sec
+            fr3_joint5: 5.26 # rad / sec
+            fr3_joint6: 4.18 # rad / sec
+            fr3_joint7: 5.26 # rad / sec
+            # panda_finger_joint1: 2.0 # rad / sec
+            # panda_finger_joint2: 2.0 # rad / sec
+
+        joint_position_limit:
+            lower: 
+                fr3_joint1: -2.7437 # rad
+                fr3_joint2: -1.7837 # rad
+                fr3_joint3: -2.9007 # rad
+                fr3_joint4: -3.0421 # rad
+                fr3_joint5: -2.8065 # rad
+                fr3_joint6: 0.5445 # rad
+                fr3_joint7: -3.0159 # rad
+            upper:
+                fr3_joint1: 2.7437 # rad
+                fr3_joint2: 1.7837 # rad
+                fr3_joint3: 2.9007 # rad
+                fr3_joint4: -0.1518 # rad
+                fr3_joint5: 2.8065 # rad
+                fr3_joint6: 4.5169 # rad
+                fr3_joint7: 3.0159 # rad
+
+        joint_effort_limit:
+            fr3_joint1: 87 # Nm
+            fr3_joint2: 87 # Nm
+            fr3_joint3: 87 # Nm
+            fr3_joint4: 87 # Nm
+            fr3_joint5: 12 # Nm
+            fr3_joint6: 12 # Nm
+            fr3_joint7: 12 # Nm
+
+    realtime_config: enforce
+    # Configure the initial defaults for the collision behavior reflexes.
+    collision_config:
+      lower_torque_thresholds_acceleration: [20.0, 20.0, 18.0, 18.0, 16.0, 14.0, 12.0]  # [Nm]
+      upper_torque_thresholds_acceleration: [20.0, 20.0, 18.0, 18.0, 16.0, 14.0, 12.0]  # [Nm]
+      lower_torque_thresholds_nominal: [20.0, 20.0, 18.0, 18.0, 16.0, 14.0, 12.0]  # [Nm]
+      upper_torque_thresholds_nominal: [20.0, 20.0, 18.0, 18.0, 16.0, 14.0, 12.0]  # [Nm]
+      lower_force_thresholds_acceleration: [20.0, 20.0, 20.0, 25.0, 25.0, 25.0]  # [N, N, N, Nm, Nm, Nm]
+      upper_force_thresholds_acceleration: [20.0, 20.0, 20.0, 25.0, 25.0, 25.0]  # [N, N, N, Nm, Nm, Nm]
+      lower_force_thresholds_nominal: [20.0, 20.0, 20.0, 25.0, 25.0, 25.0]  # [N, N, N, Nm, Nm, Nm]
+      upper_force_thresholds_nominal: [20.0, 20.0, 20.0, 25.0, 25.0, 25.0]  # [N, N, N, Nm, Nm, Nm]      
+
+gripper_config:
+  joint_names:
+    - fr3_finger_joint1
+    - fr3_finger_joint2
+  default_speed: 0.1  # [m/s]
+  default_grasp_epsilon:
+    inner: 0.005 # [m]
+    outer: 0.005 # [m]
+
+controllers_config:
+    position_controller: "franka_ros_interface/position_joint_position_controller"
+    torque_controller: "franka_ros_interface/effort_joint_torque_controller"
+    impedance_controller: "franka_ros_interface/effort_joint_impedance_controller"
+    velocity_controller: "franka_ros_interface/velocity_joint_velocity_controller"
+    trajectory_controller: "position_joint_trajectory_controller"
+    default_controller: "position_joint_trajectory_controller" # for safety, always set a position controller as default
+    command_timeout: 0.2 # timeout to wait for consecutive torque control commands (or velocity) when using torque (or velocity) control. If timeout is violated, the controller interface will automatically switch to default controller for safety
