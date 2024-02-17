@@ -1,37 +1,37 @@
+arm_id: $(arg arm_id)
 position_joint_position_controller:
     type: franka_ros_controllers/PositionJointPositionController
     joint_names:
-        - panda_joint1
-        - panda_joint2
-        - panda_joint3
-        - panda_joint4
-        - panda_joint5
-        - panda_joint6
-        - panda_joint7
+        - $(arg arm_id)_joint1
+        - $(arg arm_id)_joint2
+        - $(arg arm_id)_joint3
+        - $(arg arm_id)_joint4
+        - $(arg arm_id)_joint5
+        - $(arg arm_id)_joint6
+        - $(arg arm_id)_joint7
 
 velocity_joint_velocity_controller:
     type: franka_ros_controllers/VelocityJointVelocityController
     joint_names:
-        - panda_joint1
-        - panda_joint2
-        - panda_joint3
-        - panda_joint4
-        - panda_joint5
-        - panda_joint6
-        - panda_joint7
+        - $(arg arm_id)_joint1
+        - $(arg arm_id)_joint2
+        - $(arg arm_id)_joint3
+        - $(arg arm_id)_joint4
+        - $(arg arm_id)_joint5
+        - $(arg arm_id)_joint6
+        - $(arg arm_id)_joint7
 
 
 effort_joint_impedance_controller:
     type: franka_ros_controllers/EffortJointImpedanceController
-    arm_id: panda
     joint_names:
-        - panda_joint1
-        - panda_joint2
-        - panda_joint3
-        - panda_joint4
-        - panda_joint5
-        - panda_joint6
-        - panda_joint7
+        - $(arg arm_id)_joint1
+        - $(arg arm_id)_joint2
+        - $(arg arm_id)_joint3
+        - $(arg arm_id)_joint4
+        - $(arg arm_id)_joint5
+        - $(arg arm_id)_joint6
+        - $(arg arm_id)_joint7
     k_gains: # if changing the default values, remember to change in the cfg file as well
         - 1200.0
         - 1000.0
@@ -53,15 +53,14 @@ effort_joint_impedance_controller:
 
 effort_joint_position_controller:
     type: franka_ros_controllers/EffortJointPositionController
-    arm_id: panda
     joint_names:
-        - panda_joint1
-        - panda_joint2
-        - panda_joint3
-        - panda_joint4
-        - panda_joint5
-        - panda_joint6
-        - panda_joint7
+        - $(arg arm_id)_joint1
+        - $(arg arm_id)_joint2
+        - $(arg arm_id)_joint3
+        - $(arg arm_id)_joint4
+        - $(arg arm_id)_joint5
+        - $(arg arm_id)_joint6
+        - $(arg arm_id)_joint7
     k_gains:
         - 1200.0
         - 1000.0
@@ -82,14 +81,13 @@ effort_joint_position_controller:
 
 effort_joint_torque_controller:
     type: franka_ros_controllers/EffortJointTorqueController
-    arm_id: panda
     compensate_coriolis: false
     joint_names:
-        - panda_joint1
-        - panda_joint2
-        - panda_joint3
-        - panda_joint4
-        - panda_joint5
-        - panda_joint6
-        - panda_joint7
+        - $(arg arm_id)_joint1
+        - $(arg arm_id)_joint2
+        - $(arg arm_id)_joint3
+        - $(arg arm_id)_joint4
+        - $(arg arm_id)_joint5
+        - $(arg arm_id)_joint6
+        - $(arg arm_id)_joint7
 
