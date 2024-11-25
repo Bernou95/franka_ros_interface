@@ -153,7 +153,9 @@ int main(int argc, char** argv) {
       });
     } catch (const franka::ControlException& e) {
       ROS_ERROR("%s", e.what());
-      has_error = true;
+      std::cout << "Running error recovery..." << std::endl;
+      robot.automaticErrorRecovery();
+      //has_error = true;
     }
   }
 
