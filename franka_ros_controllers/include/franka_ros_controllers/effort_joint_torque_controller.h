@@ -65,7 +65,7 @@ class EffortJointTorqueController : public controller_interface::MultiInterfaceC
   std::unique_ptr<franka_hw::FrankaModelHandle> model_handle_;
   std::vector<hardware_interface::JointHandle> joint_handles_;
 
-  static constexpr double kDeltaTauMax{1.0};
+  static constexpr double kDeltaTauMax{0.1};
   double coriolis_factor_{1.0};
 
   std::array<double, 7> jnt_cmd_{};
