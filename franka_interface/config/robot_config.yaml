@@ -30,44 +30,44 @@ robot_config:
 
     joint_config:
         joint_acceleration_limit:
-            panda_joint1: 15.0 # rad / sec^2
-            panda_joint2: 7.5  # rad / sec^2
+            panda_joint1: 10.0 #15.0 # rad / sec^2
+            panda_joint2: 10.0 #7.5  # rad / sec^2
             panda_joint3: 10.0 # rad / sec^2
-            panda_joint4: 12.5 # rad / sec^2
-            panda_joint5: 15.0 # rad / sec^2
-            panda_joint6: 20.0 # rad / sec^2
-            panda_joint7: 20.0 # rad / sec^2
+            panda_joint4: 10.0 #12.5 # rad / sec^2
+            panda_joint5: 10.0 #15.0 # rad / sec^2
+            panda_joint6: 10.0 #20.0 # rad / sec^2
+            panda_joint7: 10.0 #20.0 # rad / sec^2
             # panda_finger_joint1: 12.0 # rad / sec^2
             # panda_finger_joint2: 12.0 # rad / sec^2
 
         joint_velocity_limit:
-            panda_joint1: 2.1750 # rad / sec
-            panda_joint2: 2.1750 # rad / sec
-            panda_joint3: 2.1750 # rad / sec
-            panda_joint4: 2.1750 # rad / sec
-            panda_joint5: 2.6100 # rad / sec
-            panda_joint6: 2.6100 # rad / sec
-            panda_joint7: 2.6100 # rad / sec
+            panda_joint1: 2.0 #2.1750 # rad / sec
+            panda_joint2: 1.0 #2.1750 # rad / sec
+            panda_joint3: 1.5 #2.1750 # rad / sec
+            panda_joint4: 1.25 #2.1750 # rad / sec
+            panda_joint5: 3.0 #2.6100 # rad / sec
+            panda_joint6: 1.5 #2.6100 # rad / sec
+            panda_joint7: 3.0 #2.6100 # rad / sec
             # panda_finger_joint1: 2.0 # rad / sec
             # panda_finger_joint2: 2.0 # rad / sec
 
         joint_position_limit:
             lower: 
-                panda_joint1: -2.8973 # rad
-                panda_joint2: -1.7628 # rad
-                panda_joint3: -2.8973 # rad
-                panda_joint4: -3.0718 # rad
-                panda_joint5: -2.8973 # rad
-                panda_joint6: -0.0175 # rad
-                panda_joint7: -2.8973 # rad
+                panda_joint1: -2.3093 #-2.8973 # rad
+                panda_joint2: -1.5133 #-1.7628 # rad
+                panda_joint3: -2.4937 #-2.8973 # rad
+                panda_joint4: -2.7478 #-3.0718 # rad
+                panda_joint5: -2.48 #-2.8973 # rad
+                panda_joint6: 0.8521 #-0.0175 # rad
+                panda_joint7: -2.6895 #-2.8973 # rad
             upper:
-                panda_joint1: 2.8973 # rad
-                panda_joint2: 1.7628 # rad
-                panda_joint3: 2.8973 # rad
-                panda_joint4: -0.0698 # rad
-                panda_joint5: 2.8973 # rad
-                panda_joint6: 3.7525 # rad
-                panda_joint7: 2.8973 # rad
+                panda_joint1: 2.3093 #2.8973 # rad
+                panda_joint2: 1.5133 #1.7628 # rad
+                panda_joint3: 2.4937 #2.8973 # rad
+                panda_joint4: -0.4461 #-0.0698 # rad
+                panda_joint5: 2.48 #2.8973 # rad
+                panda_joint6: 4.2094 #3.7525 # rad
+                panda_joint7: 2.6895 #2.8973 # rad
 
         joint_effort_limit:
             panda_joint1: 87 # Nm
@@ -105,5 +105,5 @@ controllers_config:
     impedance_controller: "franka_ros_interface/effort_joint_impedance_controller"
     velocity_controller: "franka_ros_interface/velocity_joint_velocity_controller"
     trajectory_controller: "position_joint_trajectory_controller"
-    default_controller: "position_joint_trajectory_controller" # for safety, always set a position controller as default
+    default_controller: "franka_ros_interface/position_joint_position_controller" # for safety, always set a position controller as default
     command_timeout: 0.2 # timeout to wait for consecutive torque control commands (or velocity) when using torque (or velocity) control. If timeout is violated, the controller interface will automatically switch to default controller for safety
