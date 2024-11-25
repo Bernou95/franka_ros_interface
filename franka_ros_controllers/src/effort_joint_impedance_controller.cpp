@@ -131,7 +131,7 @@ bool EffortJointImpedanceController::init(hardware_interface::RobotHW* robot_hw,
   }  
 
   double controller_state_publish_rate(30.0);
-  if (!node_handle.getParam("controller_state_publish_rate", controller_state_publish_rate)) {
+  if (!node_handle.getParam("/controller_state_publish_rate", controller_state_publish_rate)) {
     ROS_INFO_STREAM("EffortJointImpedanceController: Did not find controller_state_publish_rate. Using default "
                     << controller_state_publish_rate << " [Hz].");
   }
