@@ -51,7 +51,7 @@ void MotionControllerInterface::init(ros::NodeHandle& nh,
         trajectory_controller_name_ = "position_joint_trajectory_controller";
     }
   if (!nh.getParam("/controllers_config/default_controller", default_controller_name_)) {
-        default_controller_name_ = "position_joint_trajectory_controller";
+        default_controller_name_ = "position_joint_position_controller";
     }
 
   current_controller_name_ = default_controller_name_;
